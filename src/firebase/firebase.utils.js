@@ -8,15 +8,18 @@ import "firebase/firestore";
 import "firebase/auth";
 
 // SDK config
-const firebaseConfig = {
-  apiKey: "AIzaSyCwvEvGgKo-KVEc9KV5zaczPyRMnCmOkC4",
-  authDomain: "cursoreact-ff9ab.firebaseapp.com",
-  projectId: "cursoreact-ff9ab",
-  storageBucket: "cursoreact-ff9ab.appspot.com",
-  messagingSenderId: "1070968558342",
-  appId: "1:1070968558342:web:4a1bda9707e1e53e5e0487",
-  measurementId: "G-MB39LSWCGT"
+const config = {
+
+
+  apiKey: "AIzaSyDlY0fCRryPsSqv3gELHMlYdG36XBOJW0o",
+  authDomain: "curso-react-6b588.firebaseapp.com",
+  projectId: "curso-react-6b588",
+  storageBucket: "curso-react-6b588.appspot.com",
+  messagingSenderId: "180398241682",
+  appId: "1:180398241682:web:dcbfe96604b4378fd4f34b",
+  measurementId: "G-98CRTKL8LZ"
 };
+
 firebase.initializeApp(config);
 
 // create profile document
