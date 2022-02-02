@@ -8,15 +8,15 @@ import "firebase/firestore";
 import "firebase/auth";
 
 // SDK config
-const config = {
-  apiKey: "AIzaSyA8XrL2zZ_zWroszaLAp7SMKXh_y8Pyrhw",
-  authDomain: "react-enero-fb.firebaseapp.com",
-  projectId: "react-enero-fb",
-  storageBucket: "react-enero-fb.appspot.com",
-  messagingSenderId: "377797822581",
-  appId: "1:377797822581:web:40f286a1a53e122516503c",
+const firebaseConfig = {
+  apiKey: "AIzaSyCwvEvGgKo-KVEc9KV5zaczPyRMnCmOkC4",
+  authDomain: "cursoreact-ff9ab.firebaseapp.com",
+  projectId: "cursoreact-ff9ab",
+  storageBucket: "cursoreact-ff9ab.appspot.com",
+  messagingSenderId: "1070968558342",
+  appId: "1:1070968558342:web:4a1bda9707e1e53e5e0487",
+  measurementId: "G-MB39LSWCGT"
 };
-
 firebase.initializeApp(config);
 
 // create profile document
