@@ -1,69 +1,67 @@
-import React from 'react';
+import React from "react";
 import { Switch, Route } from "react-router-dom";
 
-import './App.css';
+import "./App.css";
+
 // import components
-import HomePage from './pages/homepage/homepage.component';
-import Header from './components/header/header.component';
-import ShopPage from './pages/shop/shop.component';
+import HomePage from "./pages/homepage/homepage.component";
+import ShopPage from "./pages/shop/shop.component";
+import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
+import Header from "./components/header/header.component";
 
-import {auth, createUserProfileDocument} from './firebase/firebase.utils'
+import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 
-
-//Patter Dewsing> Statefull, Stateless
-
-
+// Pattern Design Statefull-Stateless: Statefull
 class App extends React.Component {
   constructor() {
     super();
+
     this.state = {
-      curretUser: null
-
-
+      currentUser: null, // props
     };
-
   }
 
   unsubscribeFromAuth = null;
-  // types: mount, update, umount
-  componentDidMount(){
-    this.unsubscribeFromAuth = auth.onAuthStateChanged( async userAuth => {
-      if(userAuth){
+
+  // types life cycle: mount, update, unmount
+  componentDidMount() {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+      if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
-        userRef.onSnapshot(snapShot => {
+
+        userRef.onSnapshot((snapShot) => {
           this.setState({
-            curretUser: {
-              id:snapShot.id,
-              ...snapShot.data()
-            }
-          })
-        })
+            currentUser: {
+              id: snapShot.id,
+              ...snapShot.data(),
+            },
+          });
+
+          console.log(this.state);
+        });
       }
 
-      this.setState({ curretUser: userAuth});
-    })
+      this.setState({ currentUser: userAuth });
+    });
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     this.unsubscribeFromAuth();
-  };
+  }
 
   render() {
- 
-    return(
+    return (
       <div>
-        <Header />
+        {/*Pattern design: Render Props */}
+        <Header currentUser={this.state.currentUser} />
         <Switch>
-           <Route path='/' component={HomePage}/>
-           <Route path='/shop' component={ShopPage} />
-       
-
+          <Route exact path="/" component={HomePage} />
+          <Route path="/shop" component={ShopPage} />
+          <Route path="/signin" component={SignInAndSignUpPage} />
         </Switch>
       </div>
-    )
+    );
   }
-
 }
-
 
 export default App;
